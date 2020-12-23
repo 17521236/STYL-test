@@ -13,15 +13,12 @@ Run backend:
 
 ```bash
 cd backend && npm i && npm start
-npm install
-npm start
 ```
 
 Run frontend: 
 
 ```bash
-npm install
-npm start
+npm i && npm start
 ```
 
 ## Author
