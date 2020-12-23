@@ -1,0 +1,43 @@
+<!-- table -->
+<div class="d-flex justify-content-end py-3 px-4 w-100">
+    <input [(ngModel)]="globalFilter" (change)="filterGlobal($event.target.value)" name="g-search" placeholder="Global search">
+</div>
+
+<div class="table-header" style="padding-right: 1rem;">
+    <table class="table table-striped table-hover mb-0">
+        <thead>
+            <tr>
+                <th scope="col"> </th>
+                <th *ngFor="let col of cols" [width]="col.width + '%'" scope="col">{{col.name}}</th>
+            </tr>
+            <tr>
+                <td><input type="checkbox" name="cb-all" [(ngModel)]="checkAll" (click)="selectAll($event.target.checked)"></td>
+                <td *ngFor="let col of cols">
+                    <input class="w-100" (change)="filter($event.target.value, col.field)" [name]="col.field" [placeholder]="'Search by ' + col.name">
+                </td>
+            </tr>
+        </thead>
+    </table>
+
+</div>
+<div class="table-body position-relative">
+    <div class="scroll-support" (scroll)="onScroll($event)">
+        <table class="table table-striped table-hover ">
+            <tbody>
+                <tr *ngFor="let record of values">
+                    <td>
+                        <input type="checkbox" name="cb-row" (click)="selectRecord($event.target.checked,record)">
+                    </td>
+                    <td *ngFor="let col of cols" [width]="col.width + '%'">{{record[col.field]}}</td>
+                </tr>
+                <tr *ngIf="values.length === 0">
+                    <td [attr.colspan]="cols.length + 1" class="text-center">{{emptyMessage}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <!-- loading -->
+    <div class="loading d-flex justify-content-center align-items-center w-100 h-100 position-absolute" *ngIf="loading">
+        <i class='loading__icon bx bx-loader-alt bx-spin bx-flip-vertical'></i>
+    </div>
+</div>

@@ -1,0 +1,25 @@
+.scroll-support {
+    overflow-y: scroll;
+    height: 50vh;
+}
+
+
+/* loading */
+
+.loading {
+    background-color: rgba(0, 0, 0, 0.4);
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 999;
+}
+
+.loading__icon {
+    font-size: 3rem;
+}
+
+.filter-group .bx {
+    font-size: 1.4rem;
+    padding: 0 0 0 0.5rem;
+    cursor: pointer;
+}
